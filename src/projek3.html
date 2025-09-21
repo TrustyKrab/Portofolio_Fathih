@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Details - Petani Tangguh</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Efek transisi pada galeri */
+      .gallery-item {
+        transition: transform 0.3s ease-in-out;
+      }
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+      /* Animation styles */
+      .animated {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .animated.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .slide-in-from-left {
+        transform: translateX(-40px);
+      }
+      .slide-in-from-right {
+        transform: translateX(40px);
+      }
+      .fade-in {
+        transform: translateY(20px);
+      }
+      /* Staggered delay helpers */
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-400 {
+        transition-delay: 400ms;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Header Navigasi -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-6 py-4">
+        <a href="index.html" class="text-2xl font-bold text-gray-900">
+          Fathih Pradipta Arya PH
+        </a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20 overflow-hidden">
+      <div class="max-w-4xl mx-auto">
+        <!-- Tombol Kembali -->
+        <a
+          href="index.html#projects"
+          class="inline-flex items-center text-sky-500 hover:text-sky-600 mb-8 animated slide-in-from-left"
+        >
+          <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+          Kembali ke Semua Projek
+        </a>
+
+        <!-- Judul Projek -->
+        <h1
+          class="text-3xl md:text-5xl font-bold text-gray-900 mb-10 animated slide-in-from-left delay-100"
+        >
+          "Petani Tangguh" Mobile Design
+        </h1>
+
+        <!-- Galeri Highlight Desain -->
+        <div
+          id="gallery-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
+        >
+          <div class="gallery-item cursor-pointer animated fade-in delay-200">
+            <img
+              src="img/Petani Tangguh/Baru/1.png"
+              alt="Highlight desain 1"
+              class="w-full h-auto rounded-xl shadow-lg border"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+1';"
+            />
+          </div>
+          <div class="gallery-item cursor-pointer animated fade-in delay-300">
+            <img
+              src="img/Petani Tangguh/Baru/2.png"
+              alt="Highlight desain 2"
+              class="w-full h-auto rounded-xl shadow-lg border"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+2';"
+            />
+          </div>
+          <div class="gallery-item cursor-pointer animated fade-in delay-400">
+            <img
+              src="img/Petani Tangguh/Baru/3.png"
+              alt="Highlight desain 3"
+              class="w-full h-auto rounded-xl shadow-lg border"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+3';"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Kolom Kiri: Deskripsi -->
+          <div class="md:col-span-2 animated slide-in-from-left">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+              Project Detail
+            </h2>
+            <div class="space-y-4 text-lg text-gray-700">
+              <p>
+                This project was initiated to empower farmers and gardeners by
+                providing a dedicated platform to sell their products directly
+                to buyers. The goal was to create a seamless marketplace
+                experience, enabling farmers to manage their listings, promote
+                their agricultural goods, and connect with potential customers
+                without intermediaries. The design focused on an intuitive user
+                interface, product categorization, QR-based verification, and a
+                membership system to foster trust between sellers and buyers.
+              </p>
+              <p>
+                Unfortunately, the project was discontinued midway due to the
+                client’s decision to cancel the development process. Despite
+                this, the design deliverables demonstrate a clear understanding
+                of user needs and marketplace workflows, and can serve as a
+                valuable reference for future projects.
+              </p>
+            </div>
+          </div>
+          <!-- Kolom Kanan: Info & Tautan -->
+          <div
+            class="bg-gray-50 p-6 rounded-lg border animated slide-in-from-right"
+          >
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Detail</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><strong>Kategori:</strong> UI/UX Design</li>
+              <li><strong>Tools:</strong> Figma</li>
+              <li><strong>Tahun:</strong> 2025</li>
+            </ul>
+            <a
+              href="https://www.figma.com/design/FnmXDUSHxVMDiJq5VpNCOv/PetaniTangguh-Design?node-id=32-521&t=iyAGhE0RorTkYasZ-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 w-full inline-block text-center bg-sky-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-sky-600 transition-colors"
+            >
+              Lihat Desain di Figma
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal/Overlay untuk Gambar -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4 z-50"
+    >
+      <div class="relative max-w-screen-lg max-h-screen-lg">
+        <img
+          id="lightbox-img"
+          src=""
+          alt="Tampilan diperbesar"
+          class="max-w-full max-h-[90vh] rounded-lg"
+        />
+        <button
+          id="close-lightbox"
+          class="absolute -top-4 -right-4 text-white bg-gray-800 rounded-full p-2 focus:outline-none"
+        >
+          <i data-feather="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-6 mt-12">
+      <div class="container mx-auto px-6 text-center text-gray-600">
+        <p>&copy; 2025 Fathih Pradipta Arya PH.</p>
+      </div>
+    </footer>
+
+    <script>
+      feather.replace();
+
+      // Logika untuk Lightbox/Overlay
+      window.addEventListener("load", () => {
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeLightboxBtn = document.getElementById("close-lightbox");
+
+        const openLightbox = (src) => {
+          lightboxImg.src = src;
+          lightbox.classList.remove("hidden");
+        };
+
+        const closeLightbox = () => {
+          lightbox.classList.add("hidden");
+        };
+
+        galleryItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const img = item.querySelector("img");
+            if (img) {
+              openLightbox(img.src);
+            }
+          });
+        });
+
+        closeLightboxBtn.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      });
+
+      // Animation on scroll logic
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      const elementsToAnimate = document.querySelectorAll(".animated");
+      elementsToAnimate.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
