@@ -315,14 +315,16 @@
         aria-label="Close overlay"
       ></button>
       <div class="relative z-10 max-w-7xl w-full">
-        <button
-          onclick="closeLightbox()"
-          class="absolute -top-10 right-0 md:-top-12 text-white/80 hover:text-white text-3xl"
-          aria-label="Close"
-        >
-          ×
-        </button>
         <div class="relative">
+          <!-- Tombol Close "X" dengan ikon -->
+          <button
+            onclick="closeLightbox()"
+            class="absolute top-2 right-2 z-20 text-white/80 hover:text-white bg-black/30 hover:bg-black/50 rounded-full p-2 transition-colors"
+            aria-label="Close"
+          >
+            <i data-feather="x" class="w-7 h-7"></i>
+          </button>
+
           <img
             id="lightbox-img"
             src=""
