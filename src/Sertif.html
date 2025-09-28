@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sertifikat - Fathih's Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <style>
+      /* Using Lato font as default */
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: #f9fafb; /* bg-gray-50 */
+      }
+      /* Using Poppins font for headings */
+      h1,
+      h2,
+      h3 {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Header / Navigation -->
+    <header
+      id="header"
+      class="bg-white/80 backdrop-blur-md sticky top-0 left-0 right-0 z-50 shadow-md"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-bold text-gray-900"
+          style="font-family: 'Poppins', sans-serif"
+        >
+          Fathih Pradipta Arya PH
+        </a>
+        <nav>
+          <a
+            href="index.html"
+            class="text-gray-600 hover:text-sky-500 transition-colors font-semibold"
+            >Back to Home</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="pt-12 pb-20">
+      <!-- Certificates Gallery Section -->
+      <section id="certificates-gallery" class="overflow-hidden">
+        <div class="container mx-auto px-6">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4"
+          >
+            My Certificates
+          </h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Berikut adalah kumpulan sertifikat yang telah saya peroleh dari
+            berbagai kursus, pelatihan, dan program.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Certificate 1 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert1', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 1/SERTIF 1-1.png"
+                  alt="Sertifikat 1"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #1
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 2 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert2', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 2/SERTIF 2-1.png"
+                  alt="Sertifikat 2"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #2
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 3 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert3', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 3/SERTIF 3-1.png"
+                  alt="Sertifikat 3"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #3
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 4 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert4', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 4/SERTIF 4-1.png"
+                  alt="Sertifikat 4"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #4
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 5 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert5', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 5/SERTIF 5-1.png"
+                  alt="Sertifikat 5"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #5
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 6 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert6', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 6/SERTIF 6-1.png"
+                  alt="Sertifikat 6"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #6
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 7 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert7', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF 7/SERTIF 7-1.png"
+                  alt="Sertifikat 7"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Pelatihan #7
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 8 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert8', 0)"
+              >
+                <img
+                  src="img/Sertif_Gundar/SERTIF WORKSHOP/SERTIF WORKSHOP-1.png"
+                  alt="Sertifikat Workshop"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Sertifikat Workshop
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 9 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert9', 0)"
+              >
+                <img
+                  src="https://placehold.co/600x400/cffafe/155e75?text=Sertifikat+9"
+                  alt="Surat Keterangan Proyek"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Surat Keterangan Proyek
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
+            <!-- Certificate 10 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert10', 0)"
+              >
+                <img
+                  src="https://placehold.co/600x400/e0e7ff/4338ca?text=Sertifikat+10"
+                  alt="Sertifikat 10"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Judul Sertifikat 10
+                </h3>
+                <p class="text-gray-600">Lembaga Penerbit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Lightbox Overlay ===== -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Certificate preview"
+    >
+      <button
+        class="absolute inset-0 w-full h-full"
+        onclick="closeLightbox()"
+        aria-label="Close overlay"
+      ></button>
+      <div class="relative z-10 max-w-5xl w-full">
+        <button
+          onclick="closeLightbox()"
+          class="absolute -top-10 right-0 md:-top-12 text-white/80 hover:text-white text-3xl"
+          aria-label="Close"
+        >
+          ×
+        </button>
+        <div class="relative">
+          <img
+            id="lightbox-img"
+            src=""
+            alt=""
+            class="mx-auto max-h-[78vh] w-auto rounded-lg shadow-2xl transition-opacity duration-200 opacity-0"
+          />
+          <div
+            id="lightbox-caption"
+            class="mt-3 text-center text-white/90 text-sm"
+          ></div>
+          <button
+            id="btn-prev"
+            onclick="navLightbox(-1)"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur"
+            aria-label="Previous"
+          >
+            ❮
+          </button>
+          <button
+            id="btn-next"
+            onclick="navLightbox(1)"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur"
+            aria-label="Next"
+          >
+            ❯
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-100 py-6">
+      <div class="container mx-auto px-6 text-center text-gray-600">
+        <p>&copy; 2025 Fathih Pradipta Arya PH.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Feather Icons
+      feather.replace();
+
+      // ====== Certificate Image Data ======
+      // Pastikan path gambar ini sesuai dengan struktur folder Anda
+      const albums = {
+        cert1: [
+          "img/Sertif_Gundar/SERTIF 1/SERTIF 1-1.png",
+          "img/Sertif_Gundar/SERTIF 1/SERTIF 1-2.png",
+        ],
+        cert2: [
+          "img/Sertif_Gundar/SERTIF 2/SERTIF 2-1.png",
+          "img/Sertif_Gundar/SERTIF 2/SERTIF 2-2.png",
+        ],
+        cert3: [
+          "img/Sertif_Gundar/SERTIF 3/SERTIF 3-1.png",
+          "img/Sertif_Gundar/SERTIF 3/SERTIF 3-2.png",
+        ],
+        cert4: [
+          "img/Sertif_Gundar/SERTIF 4/SERTIF 4-1.png",
+          "img/Sertif_Gundar/SERTIF 4/SERTIF 4-2.png",
+        ],
+        cert5: [
+          "img/Sertif_Gundar/SERTIF 5/SERTIF 5-1.png",
+          "img/Sertif_Gundar/SERTIF 5/SERTIF 5-2.png",
+        ],
+        cert6: [
+          "img/Sertif_Gundar/SERTIF 6/SERTIF 6-1.png",
+          "img/Sertif_Gundar/SERTIF 6/SERTIF 6-2.png",
+        ],
+        cert7: [
+          "img/Sertif_Gundar/SERTIF 7/SERTIF 7-1.png",
+          "img/Sertif_Gundar/SERTIF 7/SERTIF 7-2.png",
+        ],
+        cert8: [
+          "img/Sertif_Gundar/SERTIF WORKSHOP/SERTIF WORKSHOP-1.png",
+          "img/Sertif_Gundar/SERTIF WORKSHOP/SERTIF WORKSHOP-2.png",
+        ],
+        // Mohon perbarui path untuk sertifikat 9 karena nama folder/file tidak lengkap di screenshot
+        cert9: [
+          "img/Sertif_Gundar/Surat Keterangan Proyek/Surat Keterangan Proyek.png",
+        ],
+        cert10: [
+          "https://placehold.co/1200x800/e0e7ff/4338ca?text=Sertifikat+10",
+        ],
+      };
+
+      // ====== Lightbox Logic ======
+      let currentAlbumKey = null;
+      let currentIndex = 0;
+
+      const lightboxEl = document.getElementById("lightbox");
+      const imgEl = document.getElementById("lightbox-img");
+      const captionEl = document.getElementById("lightbox-caption");
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+
+      function openLightbox(albumKey, startIndex = 0) {
+        currentAlbumKey = albumKey;
+        currentIndex = startIndex;
+        updateLightboxImage(true);
+        lightboxEl.classList.remove("hidden");
+        lightboxEl.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightboxEl.classList.add("hidden");
+        lightboxEl.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      function navLightbox(dir) {
+        const images = albums[currentAlbumKey];
+        if (!images || images.length <= 1) return;
+        currentIndex = (currentIndex + dir + images.length) % images.length;
+        updateLightboxImage();
+      }
+
+      function updateLightboxImage(first = false) {
+        const images = albums[currentAlbumKey];
+        if (!images) return;
+
+        const hasMultipleImages = images.length > 1;
+        btnPrev.style.display = hasMultipleImages ? "block" : "none";
+        btnNext.style.display = hasMultipleImages ? "block" : "none";
+
+        const src = images[currentIndex];
+        captionEl.textContent = hasMultipleImages
+          ? `Page ${currentIndex + 1} of ${images.length}`
+          : "";
+
+        if (!first) imgEl.style.opacity = 0;
+
+        setTimeout(
+          () => {
+            imgEl.src = src;
+            imgEl.alt = `Certificate image ${currentIndex + 1}`;
+            imgEl.onload = () => {
+              imgEl.style.opacity = 1;
+            };
+          },
+          first ? 0 : 120
+        );
+      }
+
+      window.addEventListener("keydown", (e) => {
+        if (lightboxEl.classList.contains("hidden")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") navLightbox(-1);
+        if (e.key === "ArrowRight") navLightbox(1);
+      });
+    </script>
+  </body>
+</html>
