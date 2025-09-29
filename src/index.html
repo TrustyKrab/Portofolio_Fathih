@@ -66,6 +66,9 @@
       .delay-500 {
         transition-delay: 500ms;
       }
+      .delay-600 {
+        transition-delay: 600ms;
+      }
       /* Animation for images */
       .scale-up {
         transform: scale(0.95);
@@ -99,6 +102,11 @@
           >
           <a href="#about" class="nav-link hover:text-sky-500 transition-colors"
             >About Me</a
+          >
+          <a
+            href="#skills"
+            class="nav-link hover:text-sky-500 transition-colors"
+            >Skills</a
           >
           <a
             href="#projects"
@@ -135,6 +143,11 @@
           href="#about"
           class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
           >About Me</a
+        >
+        <a
+          href="#skills"
+          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          >Skills</a
         >
         <a
           href="#projects"
@@ -234,9 +247,9 @@
             <div class="flex justify-center space-x-4">
               <a
                 href="https://github.com/TrustyKrab"
-                class="text-gray-500 hover:text-sky-500"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="text-gray-500 hover:text-sky-500"
                 ><i data-feather="github" class="w-7 h-7"></i
               ></a>
               <a
@@ -251,8 +264,130 @@
         </div>
       </section>
 
+      <!-- My Skills Section -->
+      <section id="skills" class="py-20 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animated slide-in-from-left"
+          >
+            My Skills
+          </h2>
+          <div class="max-w-xl mx-auto">
+            <div
+              class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-center"
+            >
+              <!-- Skill Item: Figma -->
+              <div
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 animated fade-in delay-100"
+              >
+                <svg
+                  class="w-12 h-12"
+                  role="img"
+                  viewBox="0 0 16 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Figma</title>
+                  <path
+                    d="M8 24a4 4 0 0 1-4-4V8a4 4 0 0 1 8 0v12a4 4 0 0 1-4 4Z"
+                    fill="#1abcfe"
+                  />
+                  <path d="M8 16a4 4 0 0 1-4-4h4v4Z" fill="#0acf83" />
+                  <path d="M8 0a4 4 0 0 1 4 4h-4V0Z" fill="#a259ff" />
+                  <path d="M0 8a4 4 0 0 1 4-4v4H0Z" fill="#f24e1e" />
+                  <path
+                    d="M16 8a4 4 0 0 1-4 4V4a4 4 0 0 1 4 4Z"
+                    fill="#ff7262"
+                  />
+                </svg>
+                <p class="mt-2 text-sm font-semibold text-gray-700">Figma</p>
+              </div>
+
+              <!-- Skill Item: Canva -->
+              <div
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 animated fade-in delay-200"
+              >
+                <svg
+                  class="w-12 h-12"
+                  role="img"
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Canva</title>
+                  <defs>
+                    <radialGradient id="canva-grad" cx="0.2" cy="0.1" r="1">
+                      <stop offset="0%" stop-color="#7d2ae8" />
+                      <stop offset="100%" stop-color="#00c4cc" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="50" cy="50" r="50" fill="url(#canva-grad)" />
+                  <path
+                    d="M50.6,68.2c-6.8,0-11.6-5.3-11.6-12.5s4.7-12.4,11.5-12.4c3.5,0,6.2,1.1,8.2,3.2l-4.1,2.4c-1-1.3-2.6-2.1-4.1-2.1c-2.8,0-4.7,2.1-4.7,5.7s1.9,5.7,4.7,5.7c1.5,0,3.1-0.8,4.1-2.1l4.1,2.4C56.9,67.1,54.2,68.2,50.6,68.2z"
+                    fill="#fff"
+                  />
+                </svg>
+                <p class="mt-2 text-sm font-semibold text-gray-700">Canva</p>
+              </div>
+
+              <!-- Skill Item: React -->
+              <div
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 animated fade-in delay-300"
+              >
+                <svg
+                  class="w-12 h-12 text-sky-500"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>React</title>
+                  <path
+                    d="M12.001 2.002c-5.524 0-10.002 4.478-10.002 10.002s4.478 10.002 10.002 10.002 10.002-4.478 10.002-10.002-4.478-10.002-10.002-10.002zm0 18.003c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                  />
+                  <path
+                    d="M12.55 12.015c.67.0 1.295.278 1.765.735.47.458.745 1.096.745 1.796s-.275 1.338-.745 1.796c-.47.457-1.096.735-1.765.735s-1.295-.278-1.765-.735c-.47-.458-.745-1.096-.745-1.796s.275-1.338.745-1.796c.47-.457 1.095-.735 1.765-.735z"
+                  />
+                  <ellipse
+                    cx="12.001"
+                    cy="12.002"
+                    rx="2.531"
+                    ry="6.28"
+                    transform="rotate(-60 12 12)"
+                  />
+                  <ellipse
+                    cx="12.001"
+                    cy="12.002"
+                    rx="6.28"
+                    ry="2.531"
+                    transform="rotate(-30 12 12)"
+                  />
+                </svg>
+                <p class="mt-2 text-sm font-semibold text-gray-700">React.js</p>
+              </div>
+
+              <!-- Skill Item: MongoDB -->
+              <div
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 animated fade-in delay-400"
+              >
+                <svg
+                  class="w-12 h-12 text-green-500"
+                  role="img"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>MongoDB</title>
+                  <path
+                    d="M15.42 24c-1.63 0-3.23-.49-4.57-1.42A8.47 8.47 0 0 1 8.2 18.8c-.85-2.22-.32-4.8.84-6.39a11.3 11.3 0 0 1-2-1.93A10.45 10.45 0 0 1 5.3 6.9C2.9 8.2 1.39 10.8 1.39 13.68c0 3.86 2.5 7.15 6 8.35a11.91 11.91 0 0 1-1.37-6.06c.1-3.32 2.62-6.2 5.86-6.2 1.93 0 3.65.94 4.7 2.43.19 1.14-.84 2.87-1.58 3.53a5.1 5.1 0 0 1-1.2 2.76c.1.92.3 1.83.6 2.73.53 1.63 1.35 3.12 2.45 4.38a8.3 8.3 0 0 1-2.99 2.19zM12.18 10.15c.66.62 1.05 1.48 1.05 2.43s-.4 1.8-1.05 2.42c-1.3 1.23-3.26.74-3.83-1.1-.2-.65-.13-1.35.2-1.95s.98-1.05 1.68-1.05c.44 0 .86.13 1.22.38l-.22-.25zM12.75.05A11.53 11.53 0 0 0 8.8 8.9c.7 1.5 1.93 2.68 3.5 3.3.38-1.5.38-3.08.01-4.66a8.47 8.47 0 0 1 3.53-7.23 8.23 8.23 0 0 0-3.1- .26z"
+                  />
+                </svg>
+                <p class="mt-2 text-sm font-semibold text-gray-700">MongoDB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Projects Section -->
-      <section id="projects" class="py-20 bg-white overflow-hidden">
+      <section id="projects" class="py-20 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
             class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animated slide-in-from-left"
@@ -264,7 +399,7 @@
           >
             <!-- Project 1: iPusnas -->
             <div
-              class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-200"
+              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-200"
             >
               <!-- Image container with fixed height -->
               <div
@@ -295,7 +430,7 @@
 
             <!-- Project 2 -->
             <div
-              class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-300"
+              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-300"
             >
               <!-- Image container with fixed height -->
               <div
@@ -326,7 +461,7 @@
 
             <!-- Project 3 -->
             <div
-              class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-400"
+              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-400"
             >
               <!-- Image container with fixed height -->
               <div
@@ -356,7 +491,7 @@
 
             <!-- Project 4 -->
             <div
-              class="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-500"
+              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animated fade-in delay-500"
             >
               <!-- Image container with fixed height -->
               <div
