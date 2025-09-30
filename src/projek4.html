@@ -6,18 +6,25 @@
     <title>Project Details - Sneakers Store</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap"
       rel="stylesheet"
     />
     <!-- Feather Icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Typed.js for Typing Animation -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <style>
       body {
         font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Poppins", sans-serif;
       }
       /* Efek transisi pada galeri */
       .gallery-item {
@@ -61,28 +68,30 @@
   </head>
   <body class="bg-white text-gray-800">
     <!-- Header Navigasi -->
-    <header class="bg-white shadow-md">
-      <div class="container mx-auto px-6 py-4">
-        <a href="index.html" class="text-2xl font-bold text-gray-900">
+    <header
+      class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50 w-full"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="text-xl font-bold text-gray-900">
           Fathih Pradipta Arya PH
+        </a>
+        <a
+          href="index.html#projects"
+          class="inline-flex items-center text-sky-500 hover:text-sky-600 font-semibold"
+        >
+          <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+          Kembali
         </a>
       </div>
     </header>
 
     <main class="container mx-auto px-6 py-12 md:py-20 overflow-hidden">
       <div class="max-w-4xl mx-auto">
-        <!-- Tombol Kembali -->
-        <a
-          href="index.html#projects"
-          class="inline-flex items-center text-sky-500 hover:text-sky-600 mb-8 animated slide-in-from-left"
-        >
-          <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
-          Kembali ke Semua Projek
-        </a>
-
         <!-- Judul Projek -->
         <h1
-          class="text-3xl md:text-5xl font-bold text-gray-900 mb-10 animated slide-in-from-left delay-100"
+          class="text-3xl md:text-5xl font-bold text-gray-900 mb-10 animate-typing"
         >
           "Sneakers Store" Website Design
         </h1>
@@ -113,11 +122,11 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Kolom Kiri: Deskripsi -->
           <div class="md:col-span-2 animated slide-in-from-left">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 animate-typing">
               Project Detail
             </h2>
             <div class="space-y-4 text-lg text-gray-700">
-              <p>
+              <p class="animate-typing">
                 This website design was created as a dedicated platform for
                 sneakers enthusiasts to browse and purchase their favorite shoes
                 online. The design focuses on delivering a seamless user
@@ -125,7 +134,7 @@
                 prominently, and providing a detailed product page with
                 descriptions, available sizes, and purchase buttons.
               </p>
-              <p>
+              <p class="animate-typing">
                 Currently, this design is still in the development stage. In the
                 future, it may be realized as a fully functional website where
                 users can directly make purchases.
@@ -256,6 +265,44 @@
 
       const elementsToAnimate = document.querySelectorAll(".animated");
       elementsToAnimate.forEach((el) => observer.observe(el));
+
+      // Typing animation on scroll logic
+      if (typeof Typed !== "undefined") {
+        const typingObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const target = entry.target;
+                const originalHTML = target.innerHTML;
+
+                target.innerHTML = ""; // Clear the content to start typing
+                target.style.color = ""; // Restore original text color from transparent
+
+                new Typed(target, {
+                  strings: [originalHTML],
+                  typeSpeed: 15,
+                  contentType: "html",
+                  showCursor: false,
+                  loop: false,
+                });
+
+                observer.unobserve(target); // Animate only once
+              }
+            });
+          },
+          {
+            threshold: 0.8,
+          }
+        );
+
+        const elementsToType = document.querySelectorAll(".animate-typing");
+        elementsToType.forEach((el) => {
+          el.style.color = "transparent";
+          typingObserver.observe(el);
+        });
+      } else {
+        console.error("Typed.js is not loaded.");
+      }
     </script>
   </body>
 </html>
