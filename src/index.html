@@ -15,6 +15,8 @@
     />
     <!-- Feather Icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Typed.js for Typing Animation -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <style>
       /* Using Lato font as default */
@@ -179,17 +181,17 @@
           <!-- Left Column (Text Content) -->
           <div class="md:w-1/2 text-center md:text-left">
             <h1
-              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight animated slide-in-from-left"
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight animate-typing"
             >
               Fathih Pradipta Arya Putra H.
             </h1>
             <p
-              class="text-xl sm:text-2xl md:text-3xl text-sky-500 mb-6 animated slide-in-from-left delay-100"
+              class="text-xl sm:text-2xl md:text-3xl text-sky-500 mb-6 animate-typing"
             >
               Frontend Developer & UI/UX Designer
             </p>
             <p
-              class="text-base sm:text-lg text-gray-700 mb-8 max-w-lg mx-auto md:mx-0 animated slide-in-from-left delay-200"
+              class="text-base sm:text-lg text-gray-700 mb-8 max-w-lg mx-auto md:mx-0 animate-typing"
             >
               I build responsive web apps & intuitive UI/UX designs.
             </p>
@@ -228,12 +230,12 @@
       <section id="about" class="py-20 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animated slide-in-from-left"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
           >
             About Me
           </h2>
-          <div class="max-w-3xl mx-auto text-center animated fade-in">
-            <p class="text-lg text-gray-700 mb-6">
+          <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg text-gray-700 mb-6 animate-typing">
               As a Web Developer and UI/UX Designer, I specialize in designing
               and building modern, responsive, and intuitive web applications.
               In web development, I utilize modern technologies such as Tailwind
@@ -244,7 +246,9 @@
               enthusiastic about learning new technologies to deliver creative
               solutions that exceed expectations.
             </p>
-            <div class="flex justify-center space-x-4">
+            <div
+              class="flex justify-center space-x-4 animated fade-in delay-200"
+            >
               <a
                 href="https://github.com/TrustyKrab"
                 target="_blank"
@@ -268,7 +272,7 @@
       <section id="skills" class="py-20 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animated slide-in-from-left"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
           >
             My Skills
           </h2>
@@ -390,7 +394,7 @@
       <section id="projects" class="py-20 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animated slide-in-from-left"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
           >
             My Projects
           </h2>
@@ -526,7 +530,7 @@
       <section id="certificates" class="py-20 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
           >
             My Certificates
           </h2>
@@ -772,11 +776,13 @@
       <section id="contact" class="py-20 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4 animate-typing"
           >
             Contact Me
           </h2>
-          <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+          <p
+            class="text-center text-gray-600 mb-10 max-w-2xl mx-auto animate-typing"
+          >
             I am open to new opportunities or collaborations. Feel free to send
             me a message.
           </p>
@@ -928,7 +934,7 @@
         });
       });
 
-      // Animation on scroll logic
+      // Animation on scroll logic (for non-text elements)
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -945,6 +951,45 @@
 
       const elementsToAnimate = document.querySelectorAll(".animated");
       elementsToAnimate.forEach((el) => observer.observe(el));
+
+      // Typing animation on scroll logic
+      if (typeof Typed !== "undefined") {
+        const typingObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const target = entry.target;
+                const originalHTML = target.innerHTML;
+
+                target.innerHTML = ""; // Clear the content to start typing
+                target.style.color = ""; // Restore original text color from transparent
+
+                new Typed(target, {
+                  strings: [originalHTML],
+                  typeSpeed: 15,
+                  contentType: "html", // Important for any inner tags like <a>
+                  showCursor: false,
+                  loop: false,
+                });
+
+                observer.unobserve(target); // Animate only once
+              }
+            });
+          },
+          {
+            threshold: 0.8, // Start when 80% of element is visible for better effect
+          }
+        );
+
+        const elementsToType = document.querySelectorAll(".animate-typing");
+        elementsToType.forEach((el) => {
+          // Hide the text with transparent color to prevent layout shifts/flicker
+          el.style.color = "transparent";
+          typingObserver.observe(el);
+        });
+      } else {
+        console.error("Typed.js is not loaded.");
+      }
     </script>
   </body>
 </html>
