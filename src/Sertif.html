@@ -15,6 +15,8 @@
     />
     <!-- Feather Icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Typed.js for Typing Animation -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <style>
       /* Using Lato font as default */
@@ -27,6 +29,31 @@
       h2,
       h3 {
         font-family: "Poppins", sans-serif;
+      }
+      /* Animation styles */
+      .animated {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .animated.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .fade-in {
+        transform: translateY(20px);
+      }
+      /* Staggered delay helpers */
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-400 {
+        transition-delay: 400ms;
       }
     </style>
   </head>
@@ -49,8 +76,10 @@
         <nav>
           <a
             href="index.html"
-            class="text-gray-600 hover:text-sky-500 transition-colors font-semibold"
-            >Back to Home</a
+            class="inline-flex items-center text-sky-500 hover:text-sky-600 transition-colors font-semibold"
+          >
+            <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+            Back to Home</a
           >
         </nav>
       </div>
@@ -61,18 +90,20 @@
       <section id="certificates-gallery" class="overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4 animate-typing"
           >
             My Certificates
           </h2>
-          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p
+            class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-typing"
+          >
             This is the certificate I got at college.
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Certificate 1 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in"
             >
               <button
                 type="button"
@@ -97,7 +128,7 @@
             </div>
             <!-- Certificate 2 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in delay-100"
             >
               <button
                 type="button"
@@ -122,7 +153,7 @@
             </div>
             <!-- Certificate 3 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in delay-200"
             >
               <button
                 type="button"
@@ -147,7 +178,7 @@
             </div>
             <!-- Certificate 4 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in"
             >
               <button
                 type="button"
@@ -172,7 +203,7 @@
             </div>
             <!-- Certificate 5 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in delay-100"
             >
               <button
                 type="button"
@@ -197,7 +228,7 @@
             </div>
             <!-- Certificate 6 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in delay-200"
             >
               <button
                 type="button"
@@ -222,7 +253,7 @@
             </div>
             <!-- Certificate 7 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in"
             >
               <button
                 type="button"
@@ -247,7 +278,7 @@
             </div>
             <!-- Certificate 8 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animated fade-in delay-100"
             >
               <button
                 type="button"
@@ -444,6 +475,62 @@
         if (e.key === "ArrowLeft") navLightbox(-1);
         if (e.key === "ArrowRight") navLightbox(1);
       });
+
+      // Animation on scroll logic
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      const elementsToAnimate = document.querySelectorAll(".animated");
+      elementsToAnimate.forEach((el) => observer.observe(el));
+
+      // Typing animation on scroll logic
+      if (typeof Typed !== "undefined") {
+        const typingObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const target = entry.target;
+                const originalHTML = target.innerHTML;
+
+                target.innerHTML = ""; // Clear the content to start typing
+                target.style.color = ""; // Restore original text color from transparent
+
+                new Typed(target, {
+                  strings: [originalHTML],
+                  typeSpeed: 15,
+                  contentType: "html",
+                  showCursor: false,
+                  loop: false,
+                });
+
+                observer.unobserve(target); // Animate only once
+              }
+            });
+          },
+          {
+            threshold: 0.8,
+          }
+        );
+
+        const elementsToType = document.querySelectorAll(".animate-typing");
+        elementsToType.forEach((el) => {
+          el.style.color = "transparent";
+          typingObserver.observe(el);
+        });
+      } else {
+        console.error("Typed.js is not loaded.");
+      }
     </script>
   </body>
 </html>
