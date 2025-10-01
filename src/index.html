@@ -6,6 +6,11 @@
     <title>Fathih's Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -936,6 +941,7 @@
       }
 
       // Dark/Light Mode Toggle Logic
+      const themeToggleButton = document.getElementById("theme-toggle");
       const themeToggleDarkIcon = document.getElementById(
         "theme-toggle-dark-icon"
       );
@@ -943,45 +949,34 @@
         "theme-toggle-light-icon"
       );
 
-      // Change the icons inside the button based on previous settings
-      if (
-        localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        themeToggleLightIcon.classList.remove("hidden");
-      } else {
-        themeToggleDarkIcon.classList.remove("hidden");
-      }
-
-      const themeToggleButton = document.getElementById("theme-toggle");
-
-      themeToggleButton.addEventListener("click", function () {
-        // toggle icons
-        themeToggleDarkIcon.classList.toggle("hidden");
-        themeToggleLightIcon.classList.toggle("hidden");
-
-        // if set via local storage previously
-        if (localStorage.getItem("theme")) {
-          if (localStorage.getItem("theme") === "light") {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-          } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-          }
-
-          // if NOT set via local storage previously
+      // Function to set the correct icon based on the current theme (by checking the 'dark' class on <html>)
+      const setButtonIcon = () => {
+        if (document.documentElement.classList.contains("dark")) {
+          themeToggleDarkIcon.classList.add("hidden");
+          themeToggleLightIcon.classList.remove("hidden");
         } else {
-          if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-          } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-          }
+          themeToggleDarkIcon.classList.remove("hidden");
+          themeToggleLightIcon.classList.add("hidden");
         }
-      });
+      };
+
+      // Set initial icon state on page load
+      setButtonIcon();
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener("click", () => {
+          // Toggle dark class on <html>
+          document.documentElement.classList.toggle("dark");
+
+          // Update localStorage based on the new state
+          const isDarkMode =
+            document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+          // Update the icon to reflect the new theme
+          setButtonIcon();
+        });
+      }
     </script>
 
     <!-- Lightbox Script -->
