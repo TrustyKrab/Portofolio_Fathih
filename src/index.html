@@ -107,7 +107,7 @@
     <!-- Header / Navigation -->
     <header
       id="header"
-      class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 dark:bg-black/80 dark:border-b dark:border-gray-800"
+      class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 dark:bg-black/80 dark:border-b dark:border-neutral-800"
     >
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
@@ -160,7 +160,7 @@
           <button
             id="theme-toggle"
             type="button"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ml-4"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 ml-4"
           >
             <i
               id="theme-toggle-dark-icon"
@@ -187,32 +187,32 @@
       <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-black">
         <a
           href="#hero"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >Home</a
         >
         <a
           href="#about"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >About Me</a
         >
         <a
           href="#skills"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >Skills</a
         >
         <a
           href="#projects"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >Projects</a
         >
         <a
           href="#certificates"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >Certificates</a
         >
         <a
           href="#contact"
-          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-neutral-800 mobile-nav-link"
           >Contact</a
         >
       </div>
@@ -636,6 +636,67 @@
         </div>
       </section>
 
+      <!-- ===== Lightbox Overlay (for homepage certificates) ===== -->
+      <div
+        id="lightbox"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Certificate preview"
+      >
+        <!-- Close area (klik backdrop untuk tutup) -->
+        <button
+          class="absolute inset-0 w-full h-full"
+          onclick="closeLightbox()"
+          aria-label="Close overlay"
+        ></button>
+
+        <!-- Content wrapper -->
+        <div class="relative z-10 max-w-5xl w-full">
+          <!-- Close button -->
+          <button
+            onclick="closeLightbox()"
+            class="absolute -top-10 right-0 md:-top-12 text-white/80 hover:text-white text-3xl"
+            aria-label="Close"
+          >
+            ×
+          </button>
+
+          <!-- Image -->
+          <div class="relative">
+            <img
+              id="lightbox-img"
+              src=""
+              alt=""
+              class="mx-auto max-h-[78vh] w-auto rounded-lg shadow-2xl transition-opacity duration-200 opacity-0"
+            />
+            <!-- Caption / counter -->
+            <div
+              id="lightbox-caption"
+              class="mt-3 text-center text-white/90 text-sm"
+            ></div>
+
+            <!-- Prev / Next arrows -->
+            <button
+              id="btn-prev"
+              onclick="navLightbox(-1)"
+              class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full p-3 backdrop-blur"
+              aria-label="Previous"
+            >
+              ❮
+            </button>
+            <button
+              id="btn-next"
+              onclick="navLightbox(1)"
+              class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full p-3 backdrop-blur"
+              aria-label="Next"
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- Contact Section -->
       <section
         id="contact"
@@ -718,285 +779,263 @@
     </footer>
 
     <script>
-      // Initialize Feather Icons
-      feather.replace();
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize Feather Icons
+        feather.replace();
 
-      // Logic for Mobile Menu
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
+        // Logic for Mobile Menu
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
 
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // Close mobile menu after a link is clicked
-      const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-      mobileNavLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
         });
-      });
 
-      // Logic for header shadow on scroll
-      const header = document.getElementById("header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("shadow-lg");
-          header.classList.add("dark:border-b", "dark:border-gray-800");
-        } else {
-          header.classList.remove("shadow-lg");
-          header.classList.remove("dark:border-b", "dark:border-gray-800");
-        }
-      });
+        // Close mobile menu after a link is clicked
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
 
-      // Logic to mark active navigation on scroll
-      const sections = document.querySelectorAll("section");
-      const navLinks = document.querySelectorAll(".nav-link");
-
-      window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          // A small offset of 70px to account for the fixed header height
-          if (pageYOffset >= sectionTop - 70) {
-            current = section.getAttribute("id");
+        // Logic for header shadow on scroll
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add("shadow-lg");
+            header.classList.add("dark:border-b", "dark:border-neutral-800");
+          } else {
+            header.classList.remove("shadow-lg");
+            header.classList.remove("dark:border-b", "dark:border-neutral-800");
           }
         });
 
-        // Special case for the bottom of the page
-        if (
-          window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 2
-        ) {
-          current = sections[sections.length - 1].getAttribute("id");
-        }
+        // Logic to mark active navigation on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
 
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (
-            link.getAttribute("href") &&
-            link.getAttribute("href").substring(1) === current
-          ) {
-            link.classList.add("active");
-          }
-        });
-      });
-
-      // Smooth scrolling for all anchor links with header offset
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          const targetElement = document.querySelector(targetId);
-
-          if (targetElement) {
-            const headerOffset = 70; // Adjust this value to match your header's height
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Animation on scroll logic (for non-text elements)
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target); // Stop observing after animation
+        window.addEventListener("scroll", () => {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            // A small offset of 70px to account for the fixed header height
+            if (pageYOffset >= sectionTop - 70) {
+              current = section.getAttribute("id");
             }
           });
-        },
-        {
-          threshold: 0.1, // Trigger when 10% of the element is visible
-        }
-      );
 
-      const elementsToAnimate = document.querySelectorAll(".animated");
-      elementsToAnimate.forEach((el) => observer.observe(el));
+          // Special case for the bottom of the page
+          if (
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 2
+          ) {
+            current = sections[sections.length - 1].getAttribute("id");
+          }
 
-      // Typing animation on scroll logic
-      if (typeof Typed !== "undefined") {
-        const typingObserver = new IntersectionObserver(
-          (entries, observer) => {
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (
+              link.getAttribute("href") &&
+              link.getAttribute("href").substring(1) === current
+            ) {
+              link.classList.add("active");
+            }
+          });
+        });
+
+        // Smooth scrolling for all anchor links with header offset
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              const headerOffset = 70; // Adjust this value to match your header's height
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Animation on scroll logic (for non-text elements)
+        const observer = new IntersectionObserver(
+          (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                const target = entry.target;
-                const originalHTML = target.innerHTML;
-
-                target.innerHTML = ""; // Clear the content to start typing
-                target.style.color = ""; // Restore original text color from transparent
-
-                new Typed(target, {
-                  strings: [originalHTML],
-                  typeSpeed: 15,
-                  contentType: "html",
-                  showCursor: false,
-                  loop: false,
-                });
-
-                observer.unobserve(target); // Animate only once
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target); // Stop observing after animation
               }
             });
           },
           {
-            threshold: 0.8,
+            threshold: 0.1, // Trigger when 10% of the element is visible
           }
         );
 
-        const elementsToType = document.querySelectorAll(".animate-typing");
-        elementsToType.forEach((el) => {
-          el.style.color = "transparent";
-          typingObserver.observe(el);
-        });
-      } else {
-        console.error("Typed.js is not loaded.");
-      }
+        const elementsToAnimate = document.querySelectorAll(".animated");
+        elementsToAnimate.forEach((el) => observer.observe(el));
 
-      // Dark/Light Mode Toggle Logic
-      const themeToggleButton = document.getElementById("theme-toggle");
-      const themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon"
-      );
-      const themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon"
-      );
+        // Typing animation on scroll logic
+        if (typeof Typed !== "undefined") {
+          const typingObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const target = entry.target;
+                  const originalHTML = target.innerHTML;
 
-      // Function to set the correct icon based on the current theme (by checking the 'dark' class on <html>)
-      const setButtonIcon = () => {
-        if (document.documentElement.classList.contains("dark")) {
-          themeToggleDarkIcon.classList.add("hidden");
-          themeToggleLightIcon.classList.remove("hidden");
+                  target.innerHTML = ""; // Clear the content to start typing
+                  target.style.color = ""; // Restore original text color from transparent
+
+                  new Typed(target, {
+                    strings: [originalHTML],
+                    typeSpeed: 15,
+                    contentType: "html",
+                    showCursor: false,
+                    loop: false,
+                  });
+
+                  observer.unobserve(target); // Animate only once
+                }
+              });
+            },
+            {
+              threshold: 0.8,
+            }
+          );
+
+          const elementsToType = document.querySelectorAll(".animate-typing");
+          elementsToType.forEach((el) => {
+            el.style.color = "transparent";
+            typingObserver.observe(el);
+          });
         } else {
-          themeToggleDarkIcon.classList.remove("hidden");
-          themeToggleLightIcon.classList.add("hidden");
+          console.error("Typed.js is not loaded.");
         }
-      };
 
-      // Set initial icon state on page load
-      setButtonIcon();
-
-      if (themeToggleButton) {
-        themeToggleButton.addEventListener("click", () => {
-          // Toggle dark class on <html>
-          document.documentElement.classList.toggle("dark");
-
-          // Update localStorage based on the new state
-          const isDarkMode =
-            document.documentElement.classList.contains("dark");
-          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-
-          // Update the icon to reflect the new theme
-          setButtonIcon();
-        });
-      }
-    </script>
-
-    <!-- Lightbox Script -->
-    <script>
-      // ====== Album gambar per sertifikat ======
-      const albums = {
-        cert1: [
-          "img/Sertif_Stupen/SERTIF STUPEN-1.png",
-          "img/Sertif_Stupen/SERTIF STUPEN-2.png",
-        ],
-        cert2: [
-          "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-1.png",
-          "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-2.png",
-          "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-3.png",
-        ],
-      };
-
-      // ====== State lightbox ======
-      let currentAlbumKey = null;
-      let currentIndex = 0;
-
-      const lightboxEl = document.getElementById("lightbox");
-      const imgEl = document.getElementById("lightbox-img");
-      const captionEl = document.getElementById("lightbox-caption");
-      const btnPrev = document.getElementById("btn-prev");
-      const btnNext = document.getElementById("btn-next");
-
-      // Buka overlay
-      function openLightbox(albumKey, startIndex = 0) {
-        currentAlbumKey = albumKey;
-        currentIndex = startIndex;
-        updateLightboxImage(true);
-        lightboxEl.classList.remove("hidden");
-        lightboxEl.classList.add("flex");
-        document.body.style.overflow = "hidden"; // lock scroll
-      }
-
-      // Tutup overlay
-      function closeLightbox() {
-        lightboxEl.classList.add("hidden");
-        lightboxEl.classList.remove("flex");
-        document.body.style.overflow = "";
-      }
-
-      // Navigasi
-      function navLightbox(dir) {
-        const images = albums[currentAlbumKey];
-        if (images.length <= 1) return;
-        currentIndex = (currentIndex + dir + images.length) % images.length;
-        updateLightboxImage();
-      }
-
-      // Update gambar + caption + animasi fade
-      function updateLightboxImage(first = false) {
-        const images = albums[currentAlbumKey];
-        const src = images[currentIndex];
-
-        const hasMultipleImages = images.length > 1;
-        [btnPrev, btnNext].forEach((btn) => {
-          if (btn) btn.style.display = hasMultipleImages ? "flex" : "none";
-        });
-        const mobileNavButtons = document.querySelectorAll(
-          "#lightbox .md\\:hidden button"
+        // Dark/Light Mode Toggle Logic
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const themeToggleDarkIcon = document.getElementById(
+          "theme-toggle-dark-icon"
         );
-        mobileNavButtons.forEach((btn) => {
-          if (btn)
-            btn.parentElement.style.display = hasMultipleImages
-              ? "flex"
-              : "none";
-        });
-
-        captionEl.textContent = hasMultipleImages
-          ? `Page ${currentIndex + 1} of ${images.length}`
-          : "";
-
-        if (!first) imgEl.style.opacity = 0;
-
-        setTimeout(
-          () => {
-            imgEl.src = src;
-            imgEl.alt = `Certificate image ${currentIndex + 1}`;
-            imgEl.onload = () => {
-              imgEl.style.opacity = 1;
-            };
-            imgEl.onerror = () => {
-              imgEl.src =
-                "https://placehold.co/1200x800/e2e8f0/333333?text=Image+Not+Found";
-              imgEl.style.opacity = 1;
-            };
-          },
-          first ? 0 : 120
+        const themeToggleLightIcon = document.getElementById(
+          "theme-toggle-light-icon"
         );
-      }
 
-      // Keyboard controls
-      window.addEventListener("keydown", (e) => {
-        if (lightboxEl.classList.contains("hidden")) return;
-        if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowLeft") navLightbox(-1);
-        if (e.key === "ArrowRight") navLightbox(1);
+        const setButtonIcon = () => {
+          if (document.documentElement.classList.contains("dark")) {
+            themeToggleDarkIcon.classList.add("hidden");
+            themeToggleLightIcon.classList.remove("hidden");
+          } else {
+            themeToggleDarkIcon.classList.remove("hidden");
+            themeToggleLightIcon.classList.add("hidden");
+          }
+          feather.replace();
+        };
+
+        setButtonIcon();
+
+        if (themeToggleButton) {
+          themeToggleButton.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+            const isDarkMode =
+              document.documentElement.classList.contains("dark");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            setButtonIcon();
+          });
+        }
+
+        // ====== Lightbox Script ======
+        const albums = {
+          cert1: [
+            "img/Sertif_Stupen/SERTIF STUPEN-1.png",
+            "img/Sertif_Stupen/SERTIF STUPEN-2.png",
+          ],
+          cert2: [
+            "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-1.png",
+            "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-2.png",
+            "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-3.png",
+          ],
+        };
+
+        let currentAlbumKey = null;
+        let currentIndex = 0;
+
+        const lightboxEl = document.getElementById("lightbox");
+        const imgEl = document.getElementById("lightbox-img");
+        const captionEl = document.getElementById("lightbox-caption");
+        const btnPrev = document.getElementById("btn-prev");
+        const btnNext = document.getElementById("btn-next");
+
+        window.openLightbox = (albumKey, startIndex = 0) => {
+          currentAlbumKey = albumKey;
+          currentIndex = startIndex;
+          updateLightboxImage(true);
+          lightboxEl.classList.remove("hidden");
+          lightboxEl.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        };
+
+        window.closeLightbox = () => {
+          lightboxEl.classList.add("hidden");
+          lightboxEl.classList.remove("flex");
+          document.body.style.overflow = "";
+        };
+
+        window.navLightbox = (dir) => {
+          const images = albums[currentAlbumKey];
+          if (images.length <= 1) return;
+          currentIndex = (currentIndex + dir + images.length) % images.length;
+          updateLightboxImage();
+        };
+
+        const updateLightboxImage = (first = false) => {
+          const images = albums[currentAlbumKey];
+          const src = images[currentIndex];
+
+          const hasMultipleImages = images.length > 1;
+          [btnPrev, btnNext].forEach((btn) => {
+            if (btn) btn.style.display = hasMultipleImages ? "flex" : "none";
+          });
+
+          captionEl.textContent = hasMultipleImages
+            ? `Page ${currentIndex + 1} of ${images.length}`
+            : "";
+
+          if (!first) imgEl.style.opacity = 0;
+
+          setTimeout(
+            () => {
+              imgEl.src = src;
+              imgEl.alt = `Certificate image ${currentIndex + 1}`;
+              imgEl.onload = () => {
+                imgEl.style.opacity = 1;
+              };
+              imgEl.onerror = () => {
+                imgEl.src =
+                  "https://placehold.co/1200x800/e2e8f0/333333?text=Image+Not+Found";
+                imgEl.style.opacity = 1;
+              };
+            },
+            first ? 0 : 120
+          );
+        };
+
+        window.addEventListener("keydown", (e) => {
+          if (lightboxEl.classList.contains("hidden")) return;
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowLeft") navLightbox(-1);
+          if (e.key === "ArrowRight") navLightbox(1);
+        });
       });
     </script>
   </body>

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Details - Petani Tangguh</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <!-- Google Fonts: Inter & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +22,18 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <!-- Typed.js for Typing Animation -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -66,24 +83,46 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800">
+  <body class="bg-white text-gray-800 dark:bg-black dark:text-gray-300">
     <!-- Header Navigasi -->
     <header
-      class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50 w-full"
+      class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50 w-full dark:bg-black/80 dark:border-b dark:border-neutral-800"
     >
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="index.html" class="text-xl font-bold text-gray-900">
+        <a
+          href="index.html"
+          class="text-xl font-bold text-gray-900 dark:text-white"
+        >
           Fathih Pradipta Arya PH
         </a>
-        <a
-          href="index.html#projects"
-          class="inline-flex items-center text-sky-500 hover:text-sky-600 font-semibold"
-        >
-          <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
-          Kembali
-        </a>
+        <div class="flex items-center gap-4">
+          <a
+            href="index.html#projects"
+            class="inline-flex items-center text-sky-500 hover:text-sky-600 font-semibold dark:text-sky-400 dark:hover:text-sky-300"
+          >
+            <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+            Kembali
+          </a>
+          <!-- Theme Toggle Button -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5"
+          >
+            <i
+              id="theme-toggle-dark-icon"
+              data-feather="moon"
+              class="w-5 h-5 hidden"
+            ></i>
+            <i
+              id="theme-toggle-light-icon"
+              data-feather="sun"
+              class="w-5 h-5 hidden"
+            ></i>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -91,7 +130,7 @@
       <div class="max-w-4xl mx-auto">
         <!-- Judul Projek -->
         <h1
-          class="text-3xl md:text-5xl font-bold text-gray-900 mb-10 animate-typing"
+          class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 animate-typing"
         >
           "Petani Tangguh" Mobile Design
         </h1>
@@ -105,7 +144,7 @@
             <img
               src="img/Petani Tangguh/Baru/1.png"
               alt="Highlight desain 1"
-              class="w-full h-auto rounded-xl shadow-lg border"
+              class="w-full h-auto rounded-xl shadow-lg border dark:border-neutral-700"
               onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+1';"
             />
           </div>
@@ -113,7 +152,7 @@
             <img
               src="img/Petani Tangguh/Baru/2.png"
               alt="Highlight desain 2"
-              class="w-full h-auto rounded-xl shadow-lg border"
+              class="w-full h-auto rounded-xl shadow-lg border dark:border-neutral-700"
               onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+2';"
             />
           </div>
@@ -121,7 +160,7 @@
             <img
               src="img/Petani Tangguh/Baru/3.png"
               alt="Highlight desain 3"
-              class="w-full h-auto rounded-xl shadow-lg border"
+              class="w-full h-auto rounded-xl shadow-lg border dark:border-neutral-700"
               onerror="this.onerror=null;this.src='https://placehold.co/600x800/f3f4f6/374151?text=Highlight+3';"
             />
           </div>
@@ -130,10 +169,12 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Kolom Kiri: Deskripsi -->
           <div class="md:col-span-2 animated slide-in-from-left">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4 animate-typing">
+            <h2
+              class="text-2xl font-bold text-gray-900 dark:text-white mb-4 animate-typing"
+            >
               Project Detail
             </h2>
-            <div class="space-y-4 text-lg text-gray-700">
+            <div class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
               <p class="animate-typing">
                 This project was initiated to empower farmers and gardeners by
                 providing a dedicated platform to sell their products directly
@@ -155,10 +196,12 @@
           </div>
           <!-- Kolom Kanan: Info & Tautan -->
           <div
-            class="bg-gray-50 p-6 rounded-lg border animated slide-in-from-right"
+            class="bg-gray-50 dark:bg-neutral-900 dark:border dark:border-neutral-700 p-6 rounded-lg animated slide-in-from-right"
           >
-            <h3 class="text-xl font-bold text-gray-900 mb-4">Detail</h3>
-            <ul class="space-y-3 text-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              Detail
+            </h3>
+            <ul class="space-y-3 text-gray-700 dark:text-gray-300">
               <li><strong>Kategori:</strong> UI/UX Design</li>
               <li><strong>Tools:</strong> Figma</li>
               <li><strong>Tahun:</strong> 2025</li>
@@ -201,8 +244,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-100 py-6 mt-12">
-      <div class="container mx-auto px-6 text-center text-gray-600">
+    <footer class="bg-gray-100 dark:bg-black py-6 mt-12">
+      <div
+        class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400"
+      >
         <p>&copy; 2025 Fathih Pradipta Arya PH.</p>
       </div>
     </footer>
@@ -314,6 +359,45 @@
         });
       } else {
         console.error("Typed.js is not loaded.");
+      }
+
+      // Dark/Light Mode Toggle Logic
+      const themeToggleButton = document.getElementById("theme-toggle");
+      const themeToggleDarkIcon = document.getElementById(
+        "theme-toggle-dark-icon"
+      );
+      const themeToggleLightIcon = document.getElementById(
+        "theme-toggle-light-icon"
+      );
+
+      // Function to set the correct icon based on the current theme (by checking the 'dark' class on <html>)
+      const setButtonIcon = () => {
+        if (document.documentElement.classList.contains("dark")) {
+          themeToggleDarkIcon.classList.add("hidden");
+          themeToggleLightIcon.classList.remove("hidden");
+        } else {
+          themeToggleDarkIcon.classList.remove("hidden");
+          themeToggleLightIcon.classList.add("hidden");
+        }
+        feather.replace(); // Re-render icons
+      };
+
+      // Set initial icon state on page load
+      setButtonIcon();
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener("click", () => {
+          // Toggle dark class on <html>
+          document.documentElement.classList.toggle("dark");
+
+          // Update localStorage based on the new state
+          const isDarkMode =
+            document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+          // Update the icon to reflect the new theme
+          setButtonIcon();
+        });
       }
     </script>
   </body>
