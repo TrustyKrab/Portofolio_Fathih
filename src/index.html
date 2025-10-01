@@ -18,6 +18,19 @@
     <!-- Typed.js for Typing Animation -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
     <style>
       /* Using Lato font as default */
       body {
@@ -34,6 +47,10 @@
         color: #0ea5e9; /* Sky blue color for active link */
         font-weight: 600;
       }
+      .dark .nav-link.active {
+        color: #38bdf8;
+      }
+
       /* Animation styles */
       .animated {
         opacity: 0;
@@ -81,89 +98,116 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800">
+  <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-300">
     <!-- Header / Navigation -->
     <header
       id="header"
-      class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-shadow duration-300"
+      class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 dark:bg-gray-900/80 dark:border-b dark:border-gray-800"
     >
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
         <a
           href="#"
-          class="text-xl md:text-2xl font-bold text-gray-900"
+          class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white"
           style="font-family: 'Poppins', sans-serif"
         >
           Fathih Pradipta Arya Putra H.
         </a>
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-8 items-center text-gray-600">
-          <a href="#hero" class="nav-link hover:text-sky-500 transition-colors"
-            >Home</a
+        <div class="flex items-center">
+          <!-- Desktop Navigation -->
+          <nav
+            class="hidden md:flex space-x-8 items-center text-gray-600 dark:text-gray-400"
           >
-          <a href="#about" class="nav-link hover:text-sky-500 transition-colors"
-            >About Me</a
+            <a
+              href="#hero"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >About Me</a
+            >
+            <a
+              href="#skills"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#certificates"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >Certificates</a
+            >
+            <a
+              href="#contact"
+              class="nav-link hover:text-sky-500 transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Theme Toggle Button -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ml-4"
           >
-          <a
-            href="#skills"
-            class="nav-link hover:text-sky-500 transition-colors"
-            >Skills</a
+            <i
+              id="theme-toggle-dark-icon"
+              data-feather="moon"
+              class="w-5 h-5 hidden"
+            ></i>
+            <i
+              id="theme-toggle-light-icon"
+              data-feather="sun"
+              class="w-5 h-5 hidden"
+            ></i>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-gray-900 dark:text-white focus:outline-none ml-2"
           >
-          <a
-            href="#projects"
-            class="nav-link hover:text-sky-500 transition-colors"
-            >Projects</a
-          >
-          <a
-            href="#certificates"
-            class="nav-link hover:text-sky-500 transition-colors"
-            >Certificates</a
-          >
-          <a
-            href="#contact"
-            class="nav-link hover:text-sky-500 transition-colors"
-            >Contact</a
-          >
-        </nav>
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="md:hidden text-gray-900 focus:outline-none"
-        >
-          <i data-feather="menu"></i>
-        </button>
+            <i data-feather="menu"></i>
+          </button>
+        </div>
       </div>
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white">
+      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900">
         <a
           href="#hero"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >Home</a
         >
         <a
           href="#about"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >About Me</a
         >
         <a
           href="#skills"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >Skills</a
         >
         <a
           href="#projects"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >Projects</a
         >
         <a
           href="#certificates"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >Certificates</a
         >
         <a
           href="#contact"
-          class="block py-3 px-6 text-center hover:bg-sky-100 mobile-nav-link"
+          class="block py-3 px-6 text-center hover:bg-sky-100 dark:hover:bg-gray-800 mobile-nav-link"
           >Contact</a
         >
       </div>
@@ -173,7 +217,7 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="min-h-screen flex items-center bg-white pt-28 md:pt-20 overflow-hidden"
+        class="min-h-screen flex items-center bg-white dark:bg-gray-900 pt-28 md:pt-20 overflow-hidden"
       >
         <div
           class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
@@ -181,17 +225,17 @@
           <!-- Left Column (Text Content) -->
           <div class="md:w-1/2 text-center md:text-left">
             <h1
-              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight animate-typing"
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 leading-tight animate-typing"
             >
               Fathih Pradipta Arya Putra H.
             </h1>
             <p
-              class="text-xl sm:text-2xl md:text-3xl text-sky-500 mb-6 animate-typing"
+              class="text-xl sm:text-2xl md:text-3xl text-sky-500 dark:text-sky-400 mb-6 animate-typing"
             >
               Frontend Developer & UI/UX Designer
             </p>
             <p
-              class="text-base sm:text-lg text-gray-700 mb-8 max-w-lg mx-auto md:mx-0 animate-typing"
+              class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 animate-typing"
             >
               I build responsive web apps & intuitive UI/UX designs.
             </p>
@@ -212,7 +256,7 @@
             >
               <!-- Background Circle -->
               <div
-                class="absolute w-[90%] h-[90%] bg-sky-100 rounded-full"
+                class="absolute w-[90%] h-[90%] bg-sky-100 dark:bg-sky-900/50 rounded-full"
               ></div>
               <!-- Profile Image -->
               <img
@@ -227,15 +271,20 @@
       </section>
 
       <!-- About Me Section -->
-      <section id="about" class="py-20 bg-gray-50 overflow-hidden">
+      <section
+        id="about"
+        class="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden"
+      >
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-typing"
           >
             About Me
           </h2>
           <div class="max-w-3xl mx-auto text-center">
-            <p class="text-lg text-gray-700 mb-6 animate-typing">
+            <p
+              class="text-lg text-gray-700 dark:text-gray-300 mb-6 animate-typing"
+            >
               As a Web Developer and UI/UX Designer, I specialize in designing
               and building modern, responsive, and intuitive web applications.
               In web development, I utilize modern technologies such as Tailwind
@@ -253,14 +302,14 @@
                 href="https://github.com/TrustyKrab"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-500 hover:text-sky-500"
+                class="text-gray-500 dark:text-gray-400 hover:text-sky-500 dark:hover:text-sky-400"
                 ><i data-feather="github" class="w-7 h-7"></i
               ></a>
               <a
                 href="https://www.linkedin.com/in/fathihpraarya"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-500 hover:text-sky-500"
+                class="text-gray-500 dark:text-gray-400 hover:text-sky-500 dark:hover:text-sky-400"
                 ><i data-feather="linkedin" class="w-7 h-7"></i
               ></a>
             </div>
@@ -269,10 +318,13 @@
       </section>
 
       <!-- My Skills Section -->
-      <section id="skills" class="py-20 bg-white overflow-hidden">
+      <section
+        id="skills"
+        class="py-20 bg-white dark:bg-gray-900 overflow-hidden"
+      >
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-typing"
           >
             My Skills
           </h2>
@@ -282,50 +334,66 @@
             >
               <!-- Skill Item: Figma -->
               <div
-                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-100"
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-100"
               >
                 <img
                   src="img/LOGO/figma.png"
                   alt="Figma Logo"
                   class="w-12 h-12 object-contain"
                 />
-                <p class="mt-2 text-sm font-semibold text-gray-700">Figma</p>
+                <p
+                  class="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Figma
+                </p>
               </div>
 
               <!-- Skill Item: Canva -->
               <div
-                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-200"
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-200"
               >
                 <img
                   src="img/LOGO/canva.png"
                   alt="Canva Logo"
                   class="w-12 h-12 object-contain"
                 />
-                <p class="mt-2 text-sm font-semibold text-gray-700">Canva</p>
+                <p
+                  class="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Canva
+                </p>
               </div>
 
               <!-- Skill Item: React -->
               <div
-                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-300"
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-300"
               >
                 <img
                   src="img/LOGO/reactjs.png"
                   alt="React.js Logo"
                   class="w-12 h-12 object-contain"
                 />
-                <p class="mt-2 text-sm font-semibold text-gray-700">React.js</p>
+                <p
+                  class="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  React.js
+                </p>
               </div>
 
               <!-- Skill Item: MongoDB -->
               <div
-                class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-400"
+                class="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition duration-300 animated fade-in delay-400"
               >
                 <img
                   src="img/LOGO/mongodb.png"
                   alt="MongoDB Logo"
                   class="w-12 h-12 object-contain"
                 />
-                <p class="mt-2 text-sm font-semibold text-gray-700">MongoDB</p>
+                <p
+                  class="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  MongoDB
+                </p>
               </div>
             </div>
           </div>
@@ -333,10 +401,13 @@
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="py-20 bg-gray-50 overflow-hidden">
+      <section
+        id="projects"
+        class="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden"
+      >
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-typing"
           >
             My Projects
           </h2>
@@ -345,7 +416,7 @@
           >
             <!-- Project 1: iPusnas -->
             <div
-              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-200"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-200"
             >
               <!-- Image container with fixed height -->
               <div
@@ -359,13 +430,15 @@
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   "iPusnas" Mobile App Design
                 </h3>
                 <div class="flex flex-wrap gap-4 mt-4">
                   <a
                     href="projek1.html"
-                    class="text-sky-500 hover:text-sky-600 font-semibold inline-flex items-center"
+                    class="text-sky-500 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300 font-semibold inline-flex items-center"
                   >
                     Project Details
                     <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
@@ -376,7 +449,7 @@
 
             <!-- Project 2 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-300"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-300"
             >
               <!-- Image container with fixed height -->
               <div
@@ -390,13 +463,15 @@
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   "Merdekaworks" Website Design
                 </h3>
                 <div class="flex flex-wrap gap-4 mt-4">
                   <a
                     href="projek2.html"
-                    class="text-sky-500 hover:text-sky-600 font-semibold inline-flex items-center"
+                    class="text-sky-500 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300 font-semibold inline-flex items-center"
                   >
                     Project Details
                     <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
@@ -407,7 +482,7 @@
 
             <!-- Project 3 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-400"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-400"
             >
               <!-- Image container with fixed height -->
               <div
@@ -420,13 +495,15 @@
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   "Petani Tangguh" Mobile App Design
                 </h3>
                 <div class="flex flex-wrap gap-4 mt-4">
                   <a
                     href="projek3.html"
-                    class="text-sky-500 hover:text-sky-600 font-semibold inline-flex items-center"
+                    class="text-sky-500 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300 font-semibold inline-flex items-center"
                   >
                     Project Details
                     <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
@@ -437,7 +514,7 @@
 
             <!-- Project 4 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-500"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 animated fade-in delay-500"
             >
               <!-- Image container with fixed height -->
               <div
@@ -450,13 +527,15 @@
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   "Sneaker Store" Website Design
                 </h3>
                 <div class="flex flex-wrap gap-4 mt-4">
                   <a
                     href="projek4.html"
-                    class="text-sky-500 hover:text-sky-600 font-semibold inline-flex items-center"
+                    class="text-sky-500 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300 font-semibold inline-flex items-center"
                   >
                     Project Details
                     <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
@@ -469,10 +548,13 @@
       </section>
 
       <!-- Certificates Section -->
-      <section id="certificates" class="py-20 bg-white overflow-hidden">
+      <section
+        id="certificates"
+        class="py-20 bg-white dark:bg-gray-900 overflow-hidden"
+      >
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-typing"
           >
             My Certificates
           </h2>
@@ -480,7 +562,7 @@
           <div class="flex justify-center gap-8 flex-wrap max-w-4xl mx-auto">
             <!-- Certificate 1 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-200"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-200"
             >
               <button
                 type="button"
@@ -498,16 +580,20 @@
                 ></span>
               </button>
               <div class="p-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   Studi Independen Kampus Merdeka
                 </h3>
-                <p class="text-gray-600">PT Mitra Talenta Grup</p>
+                <p class="text-gray-600 dark:text-gray-400">
+                  PT Mitra Talenta Grup
+                </p>
               </div>
             </div>
 
             <!-- Certificate 2 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-300"
+              class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-300"
             >
               <button
                 type="button"
@@ -525,12 +611,25 @@
                 ></span>
               </button>
               <div class="p-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">
+                <h3
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
                   Cloud Practitioner Essentials
                 </h3>
-                <p class="text-gray-600">Dicoding Indonesia</p>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Dicoding Indonesia
+                </p>
               </div>
             </div>
+          </div>
+          <!-- "See More Certificates" Button -->
+          <div class="mt-12 text-center">
+            <a
+              href="Sertif.html"
+              class="bg-sky-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-sky-600 transition-transform transform hover:scale-105 inline-block animated fade-in delay-400"
+            >
+              See Other Certificates
+            </a>
           </div>
         </div>
       </section>
@@ -613,15 +712,18 @@
       </div>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-gray-50 overflow-hidden">
+      <section
+        id="contact"
+        class="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden"
+      >
         <div class="container mx-auto px-6">
           <h2
-            class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4 animate-typing"
+            class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-4 animate-typing"
           >
             Contact Me
           </h2>
           <p
-            class="text-center text-gray-600 mb-10 max-w-2xl mx-auto animate-typing"
+            class="text-center text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto animate-typing"
           >
             I am open to new opportunities or collaborations. Feel free to send
             me a message.
@@ -682,8 +784,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-100 py-6">
-      <div class="container mx-auto px-6 text-center text-gray-600">
+    <footer class="bg-gray-100 dark:bg-gray-800 py-6">
+      <div
+        class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400"
+      >
         <p>&copy; 2025 Fathih Pradipta Arya PH.</p>
       </div>
     </footer>
@@ -713,8 +817,10 @@
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
           header.classList.add("shadow-lg");
+          header.classList.add("dark:border-b", "dark:border-gray-800");
         } else {
           header.classList.remove("shadow-lg");
+          header.classList.remove("dark:border-b", "dark:border-gray-800");
         }
       });
 
@@ -733,7 +839,6 @@
         });
 
         // Special case for the bottom of the page
-        // If the user scrolls to the bottom, the last navigation item should be active.
         if (
           window.innerHeight + window.scrollY >=
           document.body.offsetHeight - 2
@@ -752,7 +857,7 @@
         });
       });
 
-      // UPDATED: Smooth scrolling for all anchor links with header offset
+      // Smooth scrolling for all anchor links with header offset
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -807,7 +912,7 @@
                 new Typed(target, {
                   strings: [originalHTML],
                   typeSpeed: 15,
-                  contentType: "html", // Important for any inner tags like <a>
+                  contentType: "html",
                   showCursor: false,
                   loop: false,
                 });
@@ -817,19 +922,66 @@
             });
           },
           {
-            threshold: 0.8, // Start when 80% of element is visible for better effect
+            threshold: 0.8,
           }
         );
 
         const elementsToType = document.querySelectorAll(".animate-typing");
         elementsToType.forEach((el) => {
-          // Hide the text with transparent color to prevent layout shifts/flicker
           el.style.color = "transparent";
           typingObserver.observe(el);
         });
       } else {
         console.error("Typed.js is not loaded.");
       }
+
+      // Dark/Light Mode Toggle Logic
+      const themeToggleDarkIcon = document.getElementById(
+        "theme-toggle-dark-icon"
+      );
+      const themeToggleLightIcon = document.getElementById(
+        "theme-toggle-light-icon"
+      );
+
+      // Change the icons inside the button based on previous settings
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+      }
+
+      const themeToggleButton = document.getElementById("theme-toggle");
+
+      themeToggleButton.addEventListener("click", function () {
+        // toggle icons
+        themeToggleDarkIcon.classList.toggle("hidden");
+        themeToggleLightIcon.classList.toggle("hidden");
+
+        // if set via local storage previously
+        if (localStorage.getItem("theme")) {
+          if (localStorage.getItem("theme") === "light") {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          }
+
+          // if NOT set via local storage previously
+        } else {
+          if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          }
+        }
+      });
     </script>
 
     <!-- Lightbox Script -->
@@ -887,7 +1039,6 @@
         const images = albums[currentAlbumKey];
         const src = images[currentIndex];
 
-        // Hide/show nav buttons if album has 1 image
         const hasMultipleImages = images.length > 1;
         [btnPrev, btnNext].forEach((btn) => {
           if (btn) btn.style.display = hasMultipleImages ? "flex" : "none";
@@ -907,7 +1058,7 @@
           : "";
 
         if (!first) imgEl.style.opacity = 0;
-        // tunggu sedikit lalu ganti src agar terlihat fade
+
         setTimeout(
           () => {
             imgEl.src = src;
