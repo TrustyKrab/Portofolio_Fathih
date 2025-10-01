@@ -469,7 +469,7 @@
       </section>
 
       <!-- Certificates Section -->
-      <section id="certificates" class="py-20 bg-gray-50 overflow-hidden">
+      <section id="certificates" class="py-20 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
             class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12 animate-typing"
@@ -477,10 +477,10 @@
             My Certificates
           </h2>
 
-          <div class="flex justify-center gap-8 flex-wrap">
-            <!-- Certificate 1 (klik -> buka overlay album cert1) -->
+          <div class="flex justify-center gap-8 flex-wrap max-w-4xl mx-auto">
+            <!-- Certificate 1 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg max-w-sm overflow-hidden animated fade-in delay-200"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-200"
             >
               <button
                 type="button"
@@ -498,7 +498,7 @@
                 ></span>
               </button>
               <div class="p-6 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">
                   Studi Independen Kampus Merdeka
                 </h3>
                 <p class="text-gray-600">PT Mitra Talenta Grup</p>
@@ -507,7 +507,7 @@
 
             <!-- Certificate 2 -->
             <div
-              class="bg-white border border-gray-200 rounded-lg shadow-lg max-w-sm overflow-hidden animated fade-in delay-300"
+              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-300"
             >
               <button
                 type="button"
@@ -519,29 +519,74 @@
                   src="img/Sertif_Dicoding/Sertifikat_dicoding_AWS-1.png"
                   alt="Sertifikat Dicoding AWS - halaman 1"
                   class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  style="aspect-ratio: 16/9; object-fit: cover"
                 />
                 <span
                   class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
                 ></span>
               </button>
               <div class="p-6 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">
                   Cloud Practitioner Essentials
                 </h3>
                 <p class="text-gray-600">Dicoding Indonesia</p>
               </div>
             </div>
-          </div>
 
-          <!-- "See More Certificates" Button -->
-          <div class="mt-12 text-center">
-            <a
-              href="Sertif.html"
-              class="bg-sky-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-sky-600 transition-transform transform hover:scale-105 inline-block animated fade-in delay-400"
+            <!-- Certificate 3 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-400"
             >
-              See Other Certificates
-            </a>
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert3', 0)"
+                aria-label="Open certificate"
+              >
+                <img
+                  src="img/Sertif_Dicoding/Sertifikat_dicoding_JS-1.png"
+                  alt="Sertifikat Dicoding JavaScript - halaman 1"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/333333?text=Cert+Not+Found';"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">
+                  Dasar Pemrograman JavaScript
+                </h3>
+                <p class="text-gray-600">Dicoding Indonesia</p>
+              </div>
+            </div>
+
+            <!-- Certificate 4 -->
+            <div
+              class="bg-white border border-gray-200 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animated fade-in delay-500"
+            >
+              <button
+                type="button"
+                class="relative group block w-full"
+                onclick="openLightbox('cert4', 0)"
+                aria-label="Open certificate"
+              >
+                <img
+                  src="img/Sertif_Gundar/Sertif_Gundar.png"
+                  alt="Sertifikat Workshop Gunadarma"
+                  class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/333333?text=Cert+Not+Found';"
+                />
+                <span
+                  class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"
+                ></span>
+              </button>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">
+                  Workshop UI/UX Design
+                </h3>
+                <p class="text-gray-600">Universitas Gunadarma</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -623,99 +668,8 @@
         </div>
       </div>
 
-      <script>
-        // ====== Album gambar per sertifikat ======
-        const albums = {
-          cert1: [
-            "img/Sertif_Stupen/SERTIF STUPEN-1.png",
-            "img/Sertif_Stupen/SERTIF STUPen-2.png",
-          ],
-          cert2: [
-            "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-1.png",
-            "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-2.png",
-          ],
-        };
-
-        // ====== State lightbox ======
-        let currentAlbumKey = null;
-        let currentIndex = 0;
-
-        const lightboxEl = document.getElementById("lightbox");
-        const imgEl = document.getElementById("lightbox-img");
-        const captionEl = document.getElementById("lightbox-caption");
-
-        // Buka overlay
-        function openLightbox(albumKey, startIndex = 0) {
-          currentAlbumKey = albumKey;
-          currentIndex = startIndex;
-          updateLightboxImage(true);
-          lightboxEl.classList.remove("hidden");
-          lightboxEl.classList.add("flex");
-          document.body.style.overflow = "hidden"; // lock scroll
-        }
-
-        // Tutup overlay
-        function closeLightbox() {
-          lightboxEl.classList.add("hidden");
-          lightboxEl.classList.remove("flex");
-          document.body.style.overflow = "";
-        }
-
-        // Navigasi
-        function navLightbox(dir) {
-          const images = albums[currentAlbumKey];
-          currentIndex = (currentIndex + dir + images.length) % images.length;
-          updateLightboxImage();
-        }
-
-        // Update gambar + caption + animasi fade
-        function updateLightboxImage(first = false) {
-          const images = albums[currentAlbumKey];
-          const src = images[currentIndex];
-          captionEl.textContent = `Page ${currentIndex + 1} of ${
-            images.length
-          }`;
-          if (!first) imgEl.style.opacity = 0;
-          // tunggu sedikit lalu ganti src agar terlihat fade
-          setTimeout(
-            () => {
-              imgEl.src = src;
-              imgEl.alt = `Certificate image ${currentIndex + 1}`;
-              imgEl.onload = () => {
-                imgEl.style.opacity = 1;
-              };
-            },
-            first ? 0 : 120
-          );
-        }
-
-        // Keyboard controls
-        window.addEventListener("keydown", (e) => {
-          if (lightboxEl.classList.contains("hidden")) return;
-          if (e.key === "Escape") closeLightbox();
-          if (e.key === "ArrowLeft") navLightbox(-1);
-          if (e.key === "ArrowRight") navLightbox(1);
-        });
-
-        // Tampilkan panah saat hover di desktop
-        (function toggleArrowsOnHover() {
-          const container = document.getElementById("lightbox");
-          const prevBtn = document.getElementById("btn-prev");
-          const nextBtn = document.getElementById("btn-next");
-          container.addEventListener("mousemove", () => {
-            prevBtn.classList.remove("hidden");
-            nextBtn.classList.remove("hidden");
-            clearTimeout(window._arrowTimer);
-            window._arrowTimer = setTimeout(() => {
-              prevBtn.classList.add("hidden");
-              nextBtn.classList.add("hidden");
-            }, 1500);
-          });
-        })();
-      </script>
-
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-white overflow-hidden">
+      <section id="contact" class="py-20 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
           <h2
             class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4 animate-typing"
@@ -932,6 +886,112 @@
       } else {
         console.error("Typed.js is not loaded.");
       }
+    </script>
+
+    <!-- Lightbox Script -->
+    <script>
+      // ====== Album gambar per sertifikat ======
+      const albums = {
+        cert1: [
+          "img/Sertif_Stupen/SERTIF STUPEN-1.png",
+          "img/Sertif_Stupen/SERTIF STUPEN-2.png",
+        ],
+        cert2: [
+          "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-1.png",
+          "img/Sertif_Dicoding/Sertifikat_dicoding_AWS-2.png",
+        ],
+        cert3: [
+          "img/Sertif_Dicoding/Sertifikat_dicoding_JS-1.png",
+          "img/Sertif_Dicoding/Sertifikat_dicoding_JS-2.png",
+        ],
+        cert4: ["img/Sertif_Gundar/Sertif_Gundar.png"],
+      };
+
+      // ====== State lightbox ======
+      let currentAlbumKey = null;
+      let currentIndex = 0;
+
+      const lightboxEl = document.getElementById("lightbox");
+      const imgEl = document.getElementById("lightbox-img");
+      const captionEl = document.getElementById("lightbox-caption");
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+
+      // Buka overlay
+      function openLightbox(albumKey, startIndex = 0) {
+        currentAlbumKey = albumKey;
+        currentIndex = startIndex;
+        updateLightboxImage(true);
+        lightboxEl.classList.remove("hidden");
+        lightboxEl.classList.add("flex");
+        document.body.style.overflow = "hidden"; // lock scroll
+      }
+
+      // Tutup overlay
+      function closeLightbox() {
+        lightboxEl.classList.add("hidden");
+        lightboxEl.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      // Navigasi
+      function navLightbox(dir) {
+        const images = albums[currentAlbumKey];
+        if (images.length <= 1) return;
+        currentIndex = (currentIndex + dir + images.length) % images.length;
+        updateLightboxImage();
+      }
+
+      // Update gambar + caption + animasi fade
+      function updateLightboxImage(first = false) {
+        const images = albums[currentAlbumKey];
+        const src = images[currentIndex];
+
+        // Hide/show nav buttons if album has 1 image
+        const hasMultipleImages = images.length > 1;
+        [btnPrev, btnNext].forEach((btn) => {
+          if (btn) btn.style.display = hasMultipleImages ? "flex" : "none";
+        });
+        const mobileNavButtons = document.querySelectorAll(
+          "#lightbox .md\\:hidden button"
+        );
+        mobileNavButtons.forEach((btn) => {
+          if (btn)
+            btn.parentElement.style.display = hasMultipleImages
+              ? "flex"
+              : "none";
+        });
+
+        captionEl.textContent = hasMultipleImages
+          ? `Page ${currentIndex + 1} of ${images.length}`
+          : "";
+
+        if (!first) imgEl.style.opacity = 0;
+        // tunggu sedikit lalu ganti src agar terlihat fade
+        setTimeout(
+          () => {
+            imgEl.src = src;
+            imgEl.alt = `Certificate image ${currentIndex + 1}`;
+            imgEl.onload = () => {
+              imgEl.style.opacity = 1;
+            };
+            imgEl.onerror = () => {
+              imgEl.src =
+                "https://placehold.co/1200x800/e2e8f0/333333?text=Image+Not+Found";
+              imgEl.style.opacity = 1;
+            };
+          },
+          first ? 0 : 120
+        );
+      }
+
+      // Keyboard controls
+      window.addEventListener("keydown", (e) => {
+        if (lightboxEl.classList.contains("hidden")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") navLightbox(-1);
+        if (e.key === "ArrowRight") navLightbox(1);
+      });
     </script>
   </body>
 </html>
